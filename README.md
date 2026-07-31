@@ -1,8 +1,9 @@
 # tsnip
 
 A command palette for the terminal. Press **Ctrl+G** to browse, search, and run saved shell snippets.
+<br>
+<img width="800" height="413" alt="tsnip" src="https://github.com/user-attachments/assets/4a78ea8f-cc16-46ae-9ab3-c3115da4e9dc" />
 
-![tsnip](assets/screenshot.png)
 
 ## Install
 
