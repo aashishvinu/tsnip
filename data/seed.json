@@ -1,0 +1,215 @@
+{
+  "folders": [
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "snippets": [
+        {
+          "id": "k8s-logs",
+          "title": "Kubectl Logs",
+          "command": "kubectl logs -f {{pod}} -n {{namespace}}"
+        },
+        {
+          "id": "k8s-exec",
+          "title": "Kubectl Exec",
+          "command": "kubectl exec -it {{pod}} -n {{namespace}} -- /bin/bash"
+        },
+        {
+          "id": "k8s-describe",
+          "title": "Describe Pod",
+          "command": "kubectl describe pod {{pod}} -n {{namespace}}"
+        },
+        {
+          "id": "k8s-get-pods",
+          "title": "Get Pods",
+          "command": "kubectl get pods -n {{namespace}} -o wide"
+        },
+        {
+          "id": "k8s-port-forward",
+          "title": "Port Forward",
+          "command": "kubectl port-forward {{pod}} {{local}}:{{remote}} -n {{namespace}}"
+        },
+        {
+          "id": "k8s-apply",
+          "title": "Apply Manifest",
+          "command": "cat <<'EOF' | kubectl apply -f -\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: {{name}}\nEOF"
+        },
+        {
+          "id": "k8s-context",
+          "title": "Switch Context",
+          "command": "kubectl config use-context {{context}}"
+        }
+      ]
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "snippets": [
+        {
+          "id": "docker-ps",
+          "title": "List Containers",
+          "command": "docker ps -a"
+        },
+        {
+          "id": "docker-logs",
+          "title": "Container Logs",
+          "command": "docker logs -f {{container}}"
+        },
+        {
+          "id": "docker-exec",
+          "title": "Exec Into Container",
+          "command": "docker exec -it {{container}} /bin/sh"
+        },
+        {
+          "id": "docker-build",
+          "title": "Build Image",
+          "command": "docker build -t {{tag}} ."
+        },
+        {
+          "id": "docker-compose-up",
+          "title": "Compose Up",
+          "command": "docker compose up -d --build\ndocker compose ps"
+        },
+        {
+          "id": "docker-prune",
+          "title": "System Prune",
+          "command": "docker system prune -af"
+        }
+      ]
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "snippets": [
+        {
+          "id": "git-status",
+          "title": "Status",
+          "command": "git status -sb"
+        },
+        {
+          "id": "git-log",
+          "title": "Pretty Log",
+          "command": "git log --oneline --graph --decorate -20"
+        },
+        {
+          "id": "git-commit",
+          "title": "Commit All",
+          "command": "git add -A\ngit commit -m \"{{message}}\""
+        },
+        {
+          "id": "git-diff",
+          "title": "Diff Staged",
+          "command": "git diff --cached"
+        },
+        {
+          "id": "git-checkout",
+          "title": "Checkout Branch",
+          "command": "git checkout {{branch}}"
+        },
+        {
+          "id": "git-stash",
+          "title": "Stash Push",
+          "command": "git stash push -m \"{{message}}\""
+        },
+        {
+          "id": "git-rebase",
+          "title": "Interactive Rebase",
+          "command": "git rebase -i HEAD~{{n}}"
+        }
+      ]
+    },
+    {
+      "id": "linux",
+      "name": "Linux",
+      "snippets": [
+        {
+          "id": "linux-disk",
+          "title": "Disk Usage",
+          "command": "df -h"
+        },
+        {
+          "id": "linux-ports",
+          "title": "Listening Ports",
+          "command": "ss -tulpn"
+        },
+        {
+          "id": "linux-process",
+          "title": "Find Process",
+          "command": "ps aux | grep {{name}}"
+        },
+        {
+          "id": "linux-tail",
+          "title": "Tail Log File",
+          "command": "tail -f {{file}}"
+        },
+        {
+          "id": "linux-find",
+          "title": "Find Large Files",
+          "command": "find {{path}} -type f -size +{{size}} -print0 \\\n  | xargs -0 ls -lh \\\n  | sort -k5 -hr \\\n  | head"
+        },
+        {
+          "id": "linux-chmod",
+          "title": "Make Executable",
+          "command": "chmod +x {{file}}"
+        }
+      ]
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "snippets": [
+        {
+          "id": "sql-tables",
+          "title": "List Tables",
+          "command": "SELECT table_name\nFROM information_schema.tables\nWHERE table_schema = '{{schema}}';"
+        },
+        {
+          "id": "sql-describe",
+          "title": "Describe Table",
+          "command": "SELECT column_name, data_type, is_nullable\nFROM information_schema.columns\nWHERE table_name = '{{table}}';"
+        },
+        {
+          "id": "sql-count",
+          "title": "Count Rows",
+          "command": "SELECT COUNT(*) FROM {{table}};"
+        },
+        {
+          "id": "sql-explain",
+          "title": "Explain Query",
+          "command": "EXPLAIN ANALYZE\n{{query}};"
+        },
+        {
+          "id": "sql-indexes",
+          "title": "Show Indexes",
+          "command": "SELECT indexname, indexdef\nFROM pg_indexes\nWHERE tablename = '{{table}}';"
+        }
+      ]
+    },
+    {
+      "id": "airflow",
+      "name": "Airflow",
+      "snippets": [
+        {
+          "id": "af-list-dags",
+          "title": "List DAGs",
+          "command": "airflow dags list"
+        },
+        {
+          "id": "af-trigger",
+          "title": "Trigger DAG",
+          "command": "airflow dags trigger {{dag_id}}"
+        },
+        {
+          "id": "af-test",
+          "title": "Test Task",
+          "command": "airflow tasks test {{dag_id}} {{task_id}} {{date}}"
+        },
+        {
+          "id": "af-pause",
+          "title": "Pause DAG",
+          "command": "airflow dags pause {{dag_id}}"
+        }
+      ]
+    }
+  ]
+}

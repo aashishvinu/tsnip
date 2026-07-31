@@ -1,0 +1,18 @@
+# Binaries
+/tsnip
+/bin/
+*.exe
+*.test
+*.out
+
+# Go / tooling
+*.tmp
+coverage.out
+vendor/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
